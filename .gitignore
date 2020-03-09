@@ -21,3 +21,8 @@ gemfile.lock
 
 # Ignore application configuration
 /config/application.yml
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml

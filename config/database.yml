@@ -11,11 +11,11 @@
 #
 default: &default
   adapter: <%= ENV["db_adapter"] %>
-  encoding: <%= ENV.fetch("db_encoding") %>
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: <%= ENV.fetch("db_username") %>
-  password: <%= ENV.fetch("db_password") %>
-  host: <%= ENV.fetch("db_host") %>
+  encoding: <%= ENV["db_encoding"] %>
+  pool: 5
+  username: <%= ENV["db_username"] %>
+  password: <%= ENV["db_password"] %>
+  host: <%= ENV["db_host"] %>
 
 development:
   <<: *default
