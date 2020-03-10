@@ -1,5 +1,4 @@
 class CreateUsers < ActiveRecord::Migration[5.1]
-  drop_table :users
   def change
     create_table :users do |t|
       t.string :username
