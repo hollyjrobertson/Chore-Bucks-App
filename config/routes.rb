@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
+  resources :users
   get 'about/index'
 
   get 'about' => 'about#index'
 
-  get 'sessions/create'
+  get 'signup' => 'sessions/create'
 
-  get 'sessions/destroy'
+  get 'logout' => 'sessions/destroy'
 
   root 'welcome#index'
 
