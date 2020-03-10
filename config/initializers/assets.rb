@@ -12,3 +12,11 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # application.js, application.css, and all non-JS/CSS in the app/assets
 # folder are already added.
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
+Rails.application.config.assets.precompile += %w( all.min.css )
+Rails.application.config.assets.precompile += %w( magnific-popup.css )
+Rails.application.config.assets.precompile += %w( creative.min.css )
+Rails.application.config.assets.precompile += %w( jquery.min.js )
+Rails.application.config.assets.precompile += %w( bootstrap.bundle.min.js )
+Rails.application.config.assets.precompile += %w( jquery.easing.min.js )
+Rails.application.config.assets.precompile += %w( jquery.magnific-popup.min.js )
+Rails.application.config.assets.precompile += %w( creative.min.js )
