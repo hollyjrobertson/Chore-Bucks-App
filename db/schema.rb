@@ -20,3 +20,21 @@ ActiveRecord::Schema.define(version: 20200310171758) do
   end
 
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
