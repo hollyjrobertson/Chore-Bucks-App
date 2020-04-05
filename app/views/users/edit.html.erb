@@ -1,9 +1,12 @@
 <!-- Edit User Page -->
+<% provide(:title, "Users - Edit") %>
+<div class="center jumbotron" id="edit">
+  <h1>Editing User</h1>
+  <div class="center">
 
-<h1>Editing User</h1>
-<!-- To Do - Edit User Page -->
+    <%= render 'form', user: @user %>
 
-<%= render 'form', user: @user %>
-
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>
+    <%= link_to 'Show', @user, class: "btn btn-lg btn-primary"  %> |
+    <%= link_to 'Back', users_path, class: "btn btn-lg btn-primary"  %>
+  </div>
+</div>
