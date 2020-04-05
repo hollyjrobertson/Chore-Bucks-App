@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :logged_in_user, only: [:edit, :update]
+  before_action :correct_user,   only: [:edit, :update, :show]
+  before_action :is_admin, only: [:index, :delete]
 
   # GET /users
   # GET /users.json
@@ -10,6 +12,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    set_user
   end
 
   # GET /users/new
@@ -19,6 +22,7 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+    set_user
   end
 
   # POST /users
@@ -54,6 +58,7 @@ class UsersController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
+    set_user
     @destroyeduser = @user.name
     @user.destroy
     respond_to do |format|
@@ -62,14 +67,40 @@ class UsersController < ApplicationController
     end
   end
 
+  # Only allow a list of trusted parameters through.
+  def user_params
+    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+  end
+
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_user
     @user = User.find(params[:id])
   end
 
-  # Only allow a list of trusted parameters through.
-  def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+  # Confirms a logged-in user.
+  def logged_in_user
+    unless logged_in?
+      flash[:notice] = 'Please Login First'
+      redirect_to login_url
+    end
   end
+
+  # Confirms a logged-in user.
+  def correct_user
+    @user = User.find(params[:id])
+    unless current_user?(@user) || is_admin?
+      flash[:notice] = 'Unauthorized Access'
+      redirect_to(root_url)
+    end
+  end
+
+  # Confirms if user is admin
+  def is_admin
+    unless is_admin?
+      flash[:notice] = 'Unauthorized Access'
+      redirect_to root_url
+    end
+  end
+
 end
