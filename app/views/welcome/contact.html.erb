@@ -1,72 +1,20 @@
-<style>
-  body {
-    background-color: #C0C0C0;
-  }
-</style>
-<!-- Navigation Bar -->
-<nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav" style="background-color:#0e0e0e;">
-  <div class="container">
-    <a class="navbar-brand js-scroll-trigger" href="home" style="color:#ed760b"><%= image_tag "logo.png", {:style => "width:15%;"}%>&nbsp;Chore Bucks</a>
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarResponsive">
-      <ul class="navbar-nav ml-auto my-2 my-lg-0">
-        <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="about" style="color:#ed760b">About</a>
-        </li>
-        <% unless current_user %>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="login" style="color:#ed760b">Login</a>
-          </li>
-        <% end %>
-        <% unless current_user %>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="signup" style="color:#ed760b">Sign Up</a>
-          </li>
-        <% end %>
-        <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="contact" style="color:#ed760b">Contact</a>
-        </li>
-        <li class="nav-item">
-          <% if current_user %>
-            <a class="nav-link js-scroll-trigger" href="logout" style="color:#ed760b">Logout</a>
-          <% end %>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
-<!-- Contact Section -->
-<section class="page-section" id="contact">
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-lg-8 text-center">
-        <h2 class="mt-0">Meet Our Developers</h2>
-        <hr class="divider my-4">
-        <p class="text-muted mb-5">Peek around our Bios or Reach Out!</p>
-      </div>
+<!-- Contact Page -->
+<% provide(:title, "Contact") %>
+  <div class="container center" id="contact">
+    <h1>Meet Our Developers</h1>
+    <div>
+      <hr class="divider my-4">
+      <p>Peek around our Bios or Reach Out!</p>
     </div>
     <div class="row">
-      <div class="col-lg-4 ml-auto text-center">
-        <a href="ryan"><i class="fa fa-cogs" style="font-size:48px; color:#ed760b;"></i>
-        <div>Ryan Hafer‬</div></a>
+      <div>
+        <%= link_to "Ryan Hafer", ryan_path %>
       </div>
-      <div class="col-lg-4 mr-auto text-center">
-        <a href="shiva"><i class="fa fa-cogs" style="font-size:48px; color:#ed760b;"></i>
-        <div>Shiva Acharya‬</div></a>
+      <div>
+        <%= link_to "Shiva Acharya", shiva_path %>
       </div>
-      <div class="col-lg-4 mr-auto text-center">
-        <a href="holly"><i class="fa fa-cogs" style="font-size:48px; color:#ed760b;"></i>
-          <div>Holly Robertson‬</div></a>
+      <div>
+        <%= link_to "Holly Robertson", holly_path %>
       </div>
     </div>
   </div>
-</section>
-
-<!-- Footer -->
-<footer class="py-5" style="background-color:#0e0e0e;">
-  <div class="container">
-    <div class="small text-center text-muted">Copyright &copy; 2020 - Chore Bucks</div>
-  </div>
-</footer>

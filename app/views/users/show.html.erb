@@ -1,60 +1,45 @@
-<!-- Show Logged-In User Page -->
+<!-- You're Signed In -->
+<% provide(:title, @user.name ) %>
+<div id="show">
+  <div class="row">
+    <aside class="col-md-4">
+      <section class="user_info">
+        <%= gravatar_for @user %>
+        <p id="notice"><%= notice %></p>
+      </section>
+    </aside>
+    <aside class="col-md-4 spacing">
+      <div>
+        <h3>User Information</h3>
+      </div>
+      <div>
+        <strong>Name:</strong>
+        <%= @user.name %>
+      </div>
+      <div>
+        <strong>Email:</strong>
+        <%= @user.email %>
+      </div>
+      <div>
+        <strong>Time:</strong>
+        <%= Time.now %>
+      </div>
 
-<!-- Navigation Bar -->
-<nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
-  <div class="container">
-    <a class="navbar-brand js-scroll-trigger" href="home"><%= image_tag "logo.png", {:style => "width:15%;"}%>&nbsp;Chore Bucks</a>
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarResponsive">
-      <ul class="navbar-nav ml-auto my-2 my-lg-0">
-        <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="about">About</a>
-        </li>
-        <% unless current_user %>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="login">Login</a>
-          </li>
-        <% end %>
-        <% unless current_user %>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="signup">Sign Up</a>
-          </li>
-        <% end %>
-        <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="contact">Contact</a>
-        </li>
-        <li class="nav-item">
-          <% if current_user %>
-            <a class="nav-link js-scroll-trigger" href="logout">Logout</a>
-          <% end %>
-        </li>
-      </ul>
+    </aside>
+    <aside class="col-md-4 spacing">
+      <div>
+        <h3>Permissions</h3>
+      </div>
+      <div>
+        <strong>Chores:</strong>
+      </div>
+    </aside>
+  </div>
+
+  <div class="row">
+    <div class="center">
+      <%= link_to 'Edit', edit_user_path(@user), class: "btn btn-lg btn-primary" %> |
+      <%= link_to 'Back', users_path, class: "btn btn-lg btn-primary" %>
     </div>
   </div>
-</nav>
-
-<!-- You're logged in Page -->
-<header class="masthead">
-  <div class="container h-100">
-    <div class="row h-100 align-items-center justify-content-center text-center">
-      <div class="col-lg-10 align-self-end">
-        <h1 class="text-white font-weight-bold">Welcome Aboard <%= @user.username %></h1>
-        <h3 class="text-white"><%= notice %></h3>
-        <hr class="divider my-4">
-      </div>
-      <div class="col-lg-8 align-self-baseline">
-        <p class="text-white-75 font-weight-light mb-5"><i>To Do: Send Email After sign-up confirmation</i></p>
-        <a class="btn btn-primary btn-xl js-scroll-trigger" href="http://chorebucksapp.com/login">Login Now</a>
-      </div>
-    </div>
-  </div>
-</header>
-
-<!-- Footer -->
-<footer class="py-5" style="background-color:#0e0e0e; flex-shrink:none">
-  <div class="container">
-    <div class="small text-center text-muted">Copyright &copy; 2020 - Chore Bucks</div>
-  </div>
-</footer>
+</div>

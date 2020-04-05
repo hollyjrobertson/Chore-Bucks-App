@@ -7,4 +7,6 @@ class WelcomeController < ApplicationController
   end
   def shiva_contact
   end
+  def about
+  end
 end

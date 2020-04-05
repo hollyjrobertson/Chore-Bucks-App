@@ -1,22 +1,23 @@
 class SessionsController < ApplicationController
   def new
   end
+
+  #Login Method - Creates a session by setting :session_id
   def create
-    user = User.find_by_username(params[:username])
-    if user && user.authenticate(params[:password])
-      session[:user_id] = user.id
-      redirect_to root_url, notice: "  Hi " + user.username + "!"
+    flash[:notice] = 'Successfully Logged In'
+    user = User.find_by(email: params[:session][:email].downcase)
+    if user && user.authenticate(params[:session][:password])
+      log_in user
+      redirect_to user
     else
-      flash.now[:alert] = "Email or password is invalid"
-      render "new"
+      flash[:notice] = 'Invalid email/password combination' # Not quite right!
+      render 'new'
     end
   end
-  def welcome
-  end
-  def page_requires_login
-  end
+
   def destroy
-    session[:user_id] = nil
-    redirect_to root_url, notice: "Logged out!"
+    flash[:notice] = 'Successfully Logged Out'
+    log_out
+    redirect_to root_url
   end
 end

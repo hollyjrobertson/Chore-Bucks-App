@@ -1,20 +1,21 @@
 Rails.application.routes.draw do
   resources :users
+
   resources :sessions, only:[:new, :create, :destroy]
 
-  get 'signup', to: 'users#new', as: 'signup'
+  root 'welcome#index'
 
-  get 'index', to: 'users#index', as: 'index'
+  get 'signup' => 'users#new'
 
-  get 'about/index'
-
-  get 'about' => 'about#index'
+  get 'about' => 'welcome#about'
 
   get 'home' => 'welcome#index'
 
-  get 'login', to: 'sessions#new', as: 'login'
+  get 'login'   => 'sessions#new'
 
-  get 'logout', to: 'sessions#destroy', as: 'logout'
+  post   'login'   => 'sessions#create'
+
+  delete 'logout'  => 'sessions#destroy'
 
   get 'contact', to: 'welcome#contact', as: 'contact'
 
@@ -23,7 +24,5 @@ Rails.application.routes.draw do
   get 'shiva', to: 'welcome#shiva_contact', as: 'shiva'
 
   get 'holly', to: 'welcome#holly_contact', as: 'holly'
-
-  root 'welcome#index'
 
 end
