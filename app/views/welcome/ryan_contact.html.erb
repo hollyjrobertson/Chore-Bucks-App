@@ -1,110 +1,28 @@
 <!-- Ryan Contact Page -->
-
-<!-- To overwrite the background color in the assets/stylesheets css files-->
-<style>
-  body {
-    background-color: #C0C0C0;
-  }
-</style>
-
-<!-- Navigation Bar -->
-<nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav" style="background-color:#0e0e0e;">
+<% provide(:title, "Ryan") %>
+<div class="container center" id="ryan">
+  <h1>Ryan Hafer</h1>
+  <hr class="divider my-4">
   <div class="container">
-    <a class="navbar-brand js-scroll-trigger" href="home" style="color:#ed760b">
-      <!--Logo and App Name in a Ruby tag -->
-      <%= image_tag "logo.png", {:style => "width:15%;"}%>&nbsp;Chore Bucks</a>
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <!--Start of Navigation Links -->
-    <div class="collapse navbar-collapse" id="navbarResponsive">
-      <ul class="navbar-nav ml-auto my-2 my-lg-0">
-        <!-- Link to About Page - Color: #ed760b -->
-        <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="about" style="color:#ed760b">About</a>
-        </li>
-        <!-- Link to Login Page (Includes Ruby if/else condition to test is user is logged in)
-         If user is logged in, this Login link won't display
-         If user isn't logged in, this Login link will display
-         Color: #ed760b -->
-        <% unless current_user %>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="login" style="color:#ed760b">Login</a>
-          </li>
-        <% end %>
-        <!-- Link to Signup Page (Includes Ruby if/else condition to test is user is logged in)
-         If user is logged in, this Signup link won't display
-         If user isn't logged in, this Signup link will display
-         Color: #ed760b -->
-        <% unless current_user %>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="signup" style="color:#ed760b">Sign Up</a>
-          </li>
-        <% end %>
-        <!-- Link to Contact Page - Color: #ed760b -->
-        <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="contact" style="color:#ed760b">Contact</a>
-        </li>
-        <!-- Link to Logout Page (Includes Ruby if/else condition to test is user is logged in)
-         If user is logged in, this Logout link will display
-         If user isn't logged in, this Logout link won't display
-         Color: #ed760b -->
-        <% if current_user %>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="logout" style="color:#ed760b">Logout</a>
-          <% end %>
-        </li>
-      </ul>
+    <div>
+      Hi there, I am Ryan Hafer, a student of Computer Science at Franklin
+      My goal is to become a professional software developer
+    </div>
+    <br>
+    <div>
+      Currently I am employed at Nationwide Children's Hospital as an IS Support Technician.
+      Even though I do not get to work directly with patients, it brings me some joy that I
+      get to be a small part of improving their outcomes.
     </div>
   </div>
-</nav>
-
-<!-- Ryan Contact Section -->
-<section class="page-section" id="contact">
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-lg-8 text-center">
-        <h2 class="mt-0">Ryan Hafer</h2>
-        <hr class="divider my-4">
-        <div class="container text-muted mb-5">
-          <div>
-            Hi there, I am Ryan Hafer, a student of Computer Science at Franklin
-           My goal is to become a professional software developer
-          </div>
-          <br>
-          <div>
-            Currently I am employed at Nationwide Children's Hospital as an IS Support Technician.
-            Even though I do not get to work directly with patients, it brings me some joy that I
-            get to be a small part of improving their outcomes.
-          </div>
-        </div>
-      </div>
+  <div class="row">
+    <div>
+      (614) 984 - 8627
     </div>
-    <div class="row">
-      <div class="col-lg-4 ml-auto text-center mb-5 mb-lg-0">
-        <i class="fa fa-phone" style="font-size:48px; color:#ed760b;"></i>
-        <div>
-          <!-- Input Phone Number (I used Google Voice) or change to another form of Contact (email/Github)
-            You can also change the icon by change the <i class="fa fa-ICONNAME">
-            Link to more icons: https://fontawesome.com/v4.7.0/icons/ -->
-          (614) 984 - 8627
-        </div>
-      </div>
-      <div class="col-lg-4 mr-auto text-center">
-        <i class="fa fa-envelope" style="font-size:48px; color:#ed760b;"></i>
-        <!-- Make sure to enter your email into the "" in href="" -->
-        <a class="d-block" href="">
-          <!-- Input your Email Address -->
-          hafer02@email.franklin.edu
-        </a>
-      </div>
+    <div>
+      <a class="d-block" href="hafer02@email.franklin.edu">
+        hafer02@email.franklin.edu
+      </a>
     </div>
   </div>
-</section>
-
-<!-- Footer -->
-<footer class="py-5" style="background-color:#0e0e0e; flex-shrink:none">
-  <div class="container">
-    <div class="small text-center text-muted">Copyright &copy; 2020 - Ryan Hafer</div>
-  </div>
-</footer>
+</div>
