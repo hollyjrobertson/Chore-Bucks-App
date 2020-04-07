@@ -1,89 +1,13 @@
-<!-- Login Page -->
+<!-- Sign Up Page -->
+<% provide(:title, "Sign Up") %>
+<div class="center jumbotron" id="signup">
+  <h1>Sign up</h1>
 
-<!-- To overwrite the background color in the assets/stylesheets css files-->
-<style>
-  body {
-    background-color: #C0C0C0;
-  }
-</style>
-
-<!-- Navigation Bar -->
-<nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav" style="background-color:#0e0e0e;">
-  <div class="container">
-    <a class="navbar-brand js-scroll-trigger" href="home" style="color:#ed760b">
-      <!--Logo and App Name in a Ruby tag -->
-      <%= image_tag "logo.png", {:style => "width:15%;"}%>&nbsp;Chore Bucks</a>
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <!--Start of Navigation Links -->
-    <div class="collapse navbar-collapse" id="navbarResponsive">
-      <ul class="navbar-nav ml-auto my-2 my-lg-0">
-        <!-- Link to About Page - Color: #ed760b -->
-        <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="about" style="color:#ed760b">About</a>
-        </li>
-        <!-- Link to Signup Page (Includes Ruby if/else condition to test is user is logged in)
-         If user is logged in, this Signup link won't display
-         If user isn't logged in, this Signup link will display
-         Color: #ed760b -->
-        <% unless current_user %>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="signup" style="color:#ed760b">Sign Up</a>
-          </li>
-        <% end %>
-        <!-- Link to Login Page (Includes Ruby if/else condition to test is user is logged in)
-         If user is logged in, this Login link won't display
-         If user isn't logged in, this Login link will display
-         Color: #ed760b -->
-        <% unless current_user %>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="login" style="color:#ed760b">Login</a>
-          </li>
-        <% end %>
-        <!-- Link to Contact Page - Color: #ed760b -->
-        <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="contact" style="color:#ed760b">Contact</a>
-        </li>
-        <!-- Link to Logout Page (Includes Ruby if/else condition to test is user is logged in)
-         If user is logged in, this Logout link will display
-         If user isn't logged in, this Logout link won't display
-         Color: #ed760b -->
-        <% if current_user %>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="logout" style="color:#ed760b">Logout</a>
-        <% end %>
-        </li>
-      </ul>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <%= render 'form', user: @user %>
+      <br>
+      <p>Current User? <%= link_to "Login Now!", login_path, :class => "btn btn-success" %></p>
     </div>
   </div>
-</nav>
-
-<!-- Login Section -->
-<section class="page-section" id="login">
-  <div class="container">
-    <div class="row no-gutter">
-      <div class="d-none d-md-flex col-md-2 col-lg-3 bg-image"></div>
-      <div class="col-md-8 col-lg-6">
-        <div class="login d-flex align-items-center py-5">
-          <div class="container">
-            <div class="row">
-              <div class="col-md-9 col-lg-8 mx-auto">
-                <h3 class="login-heading mb-4">Sign Up</h3>
-                <p id='alert'><%= alert %></p>
-                <%= render 'form', user: @user %>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Footer -->
-<footer class="py-5" style="background-color:#0e0e0e; flex-shrink:none">
-  <div class="container">
-    <div class="small text-center text-muted">Copyright &copy; 2020 - Chore Bucks</div>
-  </div>
-</footer>
+</div>

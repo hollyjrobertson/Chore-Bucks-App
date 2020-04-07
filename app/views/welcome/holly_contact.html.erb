@@ -1,86 +1,25 @@
 <!-- Holly Contact Page -->
-
-<!-- To overwrite the background color in the assets/stylesheets css files-->
-<style>
-  body {
-    background-color: #C0C0C0;
-  }
-</style>
-<!-- Navigation Bar -->
-<nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav" style="background-color:#0e0e0e;">
+<% provide(:title, "Holly") %>
+<div class="container center" id="holly">
+  <h1>Holly Robertson</h1>
+  <hr class="divider my-4">
   <div class="container">
-    <a class="navbar-brand js-scroll-trigger" href="home" style="color:#ed760b"><%= image_tag "logo.png", {:style => "width:15%;"}%>&nbsp;Chore Bucks</a>
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarResponsive">
-      <ul class="navbar-nav ml-auto my-2 my-lg-0">
-        <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="about" style="color:#ed760b">About</a>
-        </li>
-        <% unless current_user %>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="login" style="color:#ed760b">Login</a>
-          </li>
-        <% end %>
-        <% unless current_user %>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="signup" style="color:#ed760b">Sign Up</a>
-          </li>
-        <% end %>
-        <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="contact" style="color:#ed760b">Contact</a>
-        </li>
-        <li class="nav-item">
-          <% if current_user %>
-            <a class="nav-link js-scroll-trigger" href="logout" style="color:#ed760b">Logout</a>
-          <% end %>
-        </li>
-      </ul>
+    <div>
+        I am a current student at Franklin University. I'm pursuing a Bachelor's Degree in Computer Science with a minor in Web Development.
+    </div>
+    <br>
+    <div>
+      I work at Safelite as a Service Desk Analyst and am the Project Lead of this Chore Bucks Project.
     </div>
   </div>
-</nav>
-
-<!-- Holly Contact Section -->
-<section class="page-section" id="contact">
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-lg-8 text-center">
-        <h2 class="mt-0">Holly Robertson</h2>
-        <hr class="divider my-4">
-        <p class="text-muted mb-5">
-        <div class="container">
-          <div>
-            I am a current student at Franklin University. I'm pursuing a Bachelor's Degree in Computer Science with a minor in Web Development.
-          </div>
-          <br>
-          <div>
-            I work at Safelite as a Service Desk Analyst and am the Project Lead of this Chore Bucks Project.
-          </div>
-        </div>
-        </p>
-      </div>
+  <div class="row">
+    <div>
+      (401) 375-2428
     </div>
-    <div class="row">
-      <div class="col-lg-4 ml-auto text-center mb-5 mb-lg-0">
-        <i class="fa fa-phone" style="font-size:48px; color:#ed760b;"></i>
-        <div>
-          (401) 375-2428
-        </div>
-      </div>
-      <div class="col-lg-4 mr-auto text-center">
-        <i class="fa fa-envelope" style="font-size:48px; color:#ed760b;"></i>
-        <a class="d-block" href="callow16@email.franklin.edu">
-          callow16@email.franklin.edu
-        </a>
-      </div>
+    <div>
+      <a class="d-block" href="callow16@email.franklin.edu">
+        callow16@email.franklin.edu
+      </a>
     </div>
   </div>
-</section>
-
-<!-- Footer -->
-<footer class="py-5" style="background-color:#0e0e0e; flex-shrink:none">
-  <div class="container">
-    <div class="small text-center text-muted">Copyright &copy; 2020 - Holly Robertson</div>
-  </div>
-</footer>
+</div>
