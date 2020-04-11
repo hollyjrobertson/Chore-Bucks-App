@@ -1,6 +1,5 @@
 <!-- You're Signed In -->
 <% provide(:title, @user.name ) %>
-<div id="show">
   <div class="row">
     <aside class="col-md-4">
       <section class="user_info">
@@ -24,18 +23,16 @@
         <strong>Time:</strong>
         <%= Time.now %>
       </div>
-
     </aside>
-    <aside class="col-md-4 spacing">
-      <div>
-        <h3>Permissions</h3>
-      </div>
-      <div>
-        <strong>Chores:</strong>
-      </div>
-    </aside>
-  </div>
-
+    <div class="col-md-4">
+      <% if @user.chores.any? %>
+        <h3>Chores (<%= @user.chores.count %>)</h3>
+        <ol class="chores">
+          <%= render @chores %>
+        </ol>
+        <%= will_paginate @chores %>
+      <% end %>
+    </div>
   <div class="row">
     <div class="center">
       <%= link_to 'Edit', edit_user_path(@user), class: "btn btn-lg btn-primary" %> |

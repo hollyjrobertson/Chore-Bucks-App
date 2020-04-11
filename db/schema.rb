@@ -10,7 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200405003610) do
+ActiveRecord::Schema.define(version: 20200411211226) do
+
+  create_table "chores", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "user_id"
+    t.string "title"
+    t.text "description"
+    t.decimal "price", precision: 10
+    t.integer "difficultyLvl"
+    t.date "completeBy"
+    t.boolean "isFunded"
+    t.boolean "isAvailable"
+    t.boolean "isCheckedOut"
+    t.boolean "isCompleted"
+    t.boolean "isApproved"
+    t.boolean "isPaid"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_chores_on_user_id"
+  end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
@@ -20,4 +38,5 @@ ActiveRecord::Schema.define(version: 20200405003610) do
     t.string "email"
   end
 
+  add_foreign_key "chores", "users"
 end

@@ -13,6 +13,7 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     set_user
+    @chores = @user.chores.paginate(page: params[:page], per_page: 5)
   end
 
   # GET /users/new

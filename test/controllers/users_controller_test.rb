@@ -6,9 +6,11 @@ class TheControllerTest < ActionDispatch::IntegrationTest
   puts "********Testing Begin***************"
   # Defines @base_title to be used in many tests
   def setup
-    @base_title = "Chore Bucks"
-    @user = User.new(name: "Example User", email: "user@example.com",
+    @user = User.new(id: 1, name: "Example User", email: "user@example.com",
                      password: "foobar", password_confirmation: "foobar")
+    @testChore = @user.chores.build(title: "Sweep", description: "Sweep the floors", price: 10,
+                                    difficultyLvl: 2, completeBy: 3/28/2024, isFunded: 0, isAvailable: 0, isCheckedOut: 0,
+                                    isCompleted: 0, isApproved: 0, isPaid: 0)
   end
 
   # Test that verifies the root_path returns a 200 success code
@@ -28,7 +30,7 @@ class TheControllerTest < ActionDispatch::IntegrationTest
   # Test that verifies the get call to users_path  returns a 200 success code
   test "get users path" do
     get users_path
-    assert_response :success
+    assert_response :found
     puts name + " passed"
   end
 
@@ -161,4 +163,23 @@ class TheControllerTest < ActionDispatch::IntegrationTest
     puts name + " passed"
   end
 
+  # Test the order of the Chores Table
+  test "order of chores" do
+    assert_equal(1, Chore.first.difficultyLvl)
+    puts name + " passed"
+  end
+
+  # Test the length of the Chores Table
+  test "length of chores" do
+    assert_equal(6, Chore.count)
+    puts name + " passed"
+  end
+
+  # Test that chores are deleted when a user is deleted
+  test "delete chores when user is deleted" do
+    @user.save
+    @user.destroy
+    assert_equal(0, Chore.count)
+    puts name + " passed"
+  end
 end
