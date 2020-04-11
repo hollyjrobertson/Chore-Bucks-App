@@ -1,0 +1,83 @@
+sweep:
+  title: "Sweep"
+  description: "Sweep the floors"
+  price: 10
+  difficultyLvl: 2
+  completeBy: <%= 10.minutes.ago %>
+  isFunded: 0
+  isAvailable: 0
+  isCheckedOut: 0
+  isCompleted: 0
+  isApproved: 0
+  isPaid: 0
+  user_id: 1
+
+mop:
+  title: "Mop"
+  description: "Mop the floors"
+  price: 12
+  difficultyLvl: 3
+  completeBy: <%= 10.minutes.ago %>
+  isFunded: 0
+  isAvailable: 0
+  isCheckedOut: 0
+  isCompleted: 0
+  isApproved: 0
+  isPaid: 0
+  user_id: 1
+
+vacuum:
+  title: "Vacuum"
+  description: "Vacuum the floors"
+  price: 8
+  difficultyLvl: 3
+  completeBy: <%= 10.minutes.ago %>
+  isFunded: 0
+  isAvailable: 0
+  isCheckedOut: 0
+  isCompleted: 0
+  isApproved: 0
+  isPaid: 0
+  user_id: 1
+
+dust:
+  title: "Dust"
+  description: "Dust the shelves"
+  price: 9
+  difficultyLvl: 1
+  completeBy: <%= 10.minutes.ago %>
+  isFunded: 0
+  isAvailable: 0
+  isCheckedOut: 0
+  isCompleted: 0
+  isApproved: 0
+  isPaid: 0
+  user_id: 1
+
+kitchen:
+  title: "Kitchen"
+  description: "Clean the Kitchen"
+  price: 15
+  difficultyLvl: 4
+  completeBy: <%= 10.minutes.ago %>
+  isFunded: 0
+  isAvailable: 0
+  isCheckedOut: 0
+  isCompleted: 0
+  isApproved: 0
+  isPaid: 0
+  user_id: 1
+
+laundry:
+  title: "Laundry"
+  description: "Do the Laundry"
+  price: 20
+  difficultyLvl: 5
+  completeBy: <%= 10.minutes.ago %>
+  isFunded: 0
+  isAvailable: 0
+  isCheckedOut: 0
+  isCompleted: 0
+  isApproved: 0
+  isPaid: 0
+  user_id: 1

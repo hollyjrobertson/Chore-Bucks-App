@@ -274,6 +274,57 @@ aside {
 
 }
 
+/* chores */
+
+.chores {
+  list-style: none;
+  padding: 0;
+  li {
+    padding: 10px 0;
+    border-top: 1px solid #e8e8e8;
+  }
+  .title {
+    margin-top: 5em;
+    padding-top: 0;
+  }
+  .user {
+    font-weight: bold;
+    display: block;
+    margin-left: 60px;
+    img {
+      display: block;
+      padding: 5px 0;
+    }
+  }
+  .timestamp {
+    color: $gray-light;
+    display: block;
+    margin-left: 60px;
+  }
+  .gravatar {
+    float: left;
+    margin-right: 10px;
+    margin-top: 5px;
+  }
+}
+
+/* chore borders based on chore isCheckedOut status*/
+/* Chore is not checked out */
+.green {
+  border: 2px solid #32a852;
+  padding: 1%;
+}
+/* Chore is checked out */
+.orange {
+  border: 2px solid #e6d419;
+  padding: 1%;
+}
+/* Chore is not available */
+.red {
+  border: 2px solid #e61919;
+  padding: 1%;
+}
+
 /* Footer */
 
 footer {
