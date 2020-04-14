@@ -27,3 +27,5 @@ production:
   password: <%= ENV['RDS_PASSWORD'] %>
   host: <%= ENV['RDS_HOSTNAME'] %>
   port: <%= ENV['RDS_PORT'] %>
+  app_admin_email: <%= ENV['app_admin_email'] %>
+  app_coadmin_email: <%= ENV['app_admin_email'] %>

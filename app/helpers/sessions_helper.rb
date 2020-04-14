@@ -36,7 +36,7 @@ module SessionsHelper
   def is_admin?
     if current_user == nil
       false
-    elsif current_user.email == ENV.fetch("app_admin_email") || ENV.fetch("app_coadmin_email")
+    elsif current_user.email == ENV['app_admin_email']|| ENV['app_coadmin_email']
       true
     else
       false
