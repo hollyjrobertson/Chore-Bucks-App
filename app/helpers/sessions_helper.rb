@@ -45,4 +45,13 @@ module SessionsHelper
     end
   end
 
+  #Sets Notice color
+  def set_font_color(var)
+    if var == 'Successfully Logged Out'
+      "text-danger"
+    elsif var == 'Invalid email/password combination'
+      "text-danger"
+    end
+  end
+
 end
