@@ -30,6 +30,9 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(user_params)
+    @chores = Chore.new(@user.id, "Sweep", "Sweep the floors", 10,
+                         2, 10.minutes.ago, true, true,  true,
+                         false, false, false)
     respond_to do |format|
       if @user.save
         log_in @user
@@ -68,6 +71,41 @@ class UsersController < ApplicationController
     end
   end
 
+
+  # Adds 10 Default Chores to a new user
+  def add_default_chores(user)
+    params.require(:chore).permit(:name, :email, :password, :password_confirmation)
+    puts user.id
+    puts "*************"
+    @chores = user.chores.build(user_id: user.id, title: "Sweep", description: "Sweep the floors", price: 10,
+                                difficultyLvl: 2, completeBy: 10.minutes.ago, isFunded: true, isAvailable: true, isCheckedOut: true,
+                                isCompleted: false, isApproved: false, isPaid: false)
+    puts "*****user id******"
+    puts @chores.user_id
+    puts "*****title******"
+    puts user.chores.title
+    puts "*****description******"
+    puts user.chores.description
+    puts "*****price******"
+    puts user.chores.price
+    puts "*****difficultyLvl******"
+    puts user.chores.difficultyLvl
+    puts "*****completeBy******"
+    puts user.chores.completeBy
+    puts "*****isFunded******"
+    puts user.chores.isFunded
+    puts "*****isAvailable******"
+    puts user.chores.isAvailable
+    puts "*****isCheckedOut******"
+    puts user.chores.isCheckedOut
+    puts "*****isCompleted******"
+    puts user.chores.isCompleted
+    puts "*****isApproved******"
+    puts user.chores.isApproved
+    puts "*****isPaid******"
+    puts user.chores.isPaid
+  end
+
   # Only allow a list of trusted parameters through.
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
@@ -103,5 +141,6 @@ class UsersController < ApplicationController
       redirect_to root_url
     end
   end
+
 
 end
