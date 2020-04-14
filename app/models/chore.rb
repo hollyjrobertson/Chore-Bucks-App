@@ -7,7 +7,4 @@ class Chore < ApplicationRecord
   validates :price, presence: true
   validates :difficultyLvl, presence: true, length: { maximum: 1 }
   validates :completeBy, presence: true
-  def initialize(user_id, title, description, price, difficultyLvl, completeBy, isFunded, isAvailable,
-                 isCheckedOut, isCompleted, isApproved, isPaid)
-  end
 end

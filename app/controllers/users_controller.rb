@@ -30,17 +30,18 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(user_params)
-    @chores = Chore.new(@user.id, "Sweep", "Sweep the floors", 10,
-                         2, 10.minutes.ago, true, true,  true,
-                         false, false, false)
     respond_to do |format|
       if @user.save
-        log_in @user
-        format.html { redirect_to @user, notice: 'Sign-up was successful.' }
-        format.json { render :show, status: :created, location: @user }
+        @chores = Chore.new(user_id: @user.id, title: "Sweep House", description: "Sweep the floors", price: 10,
+                         difficultyLvl: 2, completeBy: Time.now)
+        if @chores.save
+          log_in @user
+          format.html { redirect_to @user, notice: 'Sign-up was successful.' }
+          format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }
         format.json { render json: @user.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
