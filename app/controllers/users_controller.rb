@@ -26,15 +26,14 @@ class UsersController < ApplicationController
     set_user
   end
 
-  # POST /users
+  # POSTS /users
   # POST /users.json
   def create
     @user = User.new(user_params)
     respond_to do |format|
       if @user.save
-        @chores = Chore.new(user_id: @user.id, title: "Sweep House", description: "Sweep the floors", price: 10,
-                         difficultyLvl: 2, completeBy: Time.now)
-        if @chores.save
+        add_default_chores
+        if Chore.create(@chores)
           log_in @user
           format.html { redirect_to @user, notice: 'Sign-up was successful.' }
           format.json { render :show, status: :created, location: @user }
@@ -74,37 +73,150 @@ class UsersController < ApplicationController
 
 
   # Adds 10 Default Chores to a new user
-  def add_default_chores(user)
-    params.require(:chore).permit(:name, :email, :password, :password_confirmation)
-    puts user.id
-    puts "*************"
-    @chores = user.chores.build(user_id: user.id, title: "Sweep", description: "Sweep the floors", price: 10,
-                                difficultyLvl: 2, completeBy: 10.minutes.ago, isFunded: true, isAvailable: true, isCheckedOut: true,
-                                isCompleted: false, isApproved: false, isPaid: false)
-    puts "*****user id******"
-    puts @chores.user_id
-    puts "*****title******"
-    puts user.chores.title
-    puts "*****description******"
-    puts user.chores.description
-    puts "*****price******"
-    puts user.chores.price
-    puts "*****difficultyLvl******"
-    puts user.chores.difficultyLvl
-    puts "*****completeBy******"
-    puts user.chores.completeBy
-    puts "*****isFunded******"
-    puts user.chores.isFunded
-    puts "*****isAvailable******"
-    puts user.chores.isAvailable
-    puts "*****isCheckedOut******"
-    puts user.chores.isCheckedOut
-    puts "*****isCompleted******"
-    puts user.chores.isCompleted
-    puts "*****isApproved******"
-    puts user.chores.isApproved
-    puts "*****isPaid******"
-    puts user.chores.isPaid
+  def add_default_chores()
+    @chores = [
+        {
+         user_id: @user.id,
+         title: "Clean Bathroom",
+         description: "Clean the bathroom. Example: Clean toilet, sink(s), bathtub, shower, mirror(s), counter(s), sweep and mop floors, and stock inventory. ",
+         price: 10,
+         difficultyLvl: 5,
+         completeBy: Time.new(2020, 5, 1),
+         isFunded: false,
+         isAvailable: false,
+         isCheckedOut: false,
+         isCompleted: false,
+         isApproved: false,
+         isPaid: false,
+        },
+        {
+            user_id: @user.id,
+            title: "Sweep Kitchen",
+            description: "Sweep the kitchen floors",
+            price: 2,
+            difficultyLvl: 2,
+            completeBy: Time.new(2020, 5, 1),
+            isFunded: false,
+            isAvailable: false,
+            isCheckedOut: false,
+            isCompleted: false,
+            isApproved: false,
+            isPaid: false,
+        },
+        {
+            user_id: @user.id,
+            title: "Mop Kitchen",
+            description: "Mop the kitchen floors",
+            price: 3,
+            difficultyLvl: 3,
+            completeBy: Time.new(2020, 5, 1),
+            isFunded: false,
+            isAvailable: false,
+            isCheckedOut: false,
+            isCompleted: false,
+            isApproved: false,
+            isPaid: false,
+        },
+        {
+            user_id: @user.id,
+            title: "Vacuum House",
+            description: "Vacuum all the carpet in the house",
+            price: 10,
+            difficultyLvl: 3,
+            completeBy: Time.new(2020, 5, 1),
+            isFunded: false,
+            isAvailable: false,
+            isCheckedOut: false,
+            isCompleted: false,
+            isApproved: false,
+            isPaid: false,
+        },
+        {
+            user_id: @user.id,
+            title: "Vacuum Living Room",
+            description: "Vacuum the floors in the living room",
+            price: 2,
+            difficultyLvl: 3,
+            completeBy: Time.new(2020, 5, 1),
+            isFunded: false,
+            isAvailable: false,
+            isCheckedOut: false,
+            isCompleted: false,
+            isApproved: false,
+            isPaid: false,
+        },
+        {
+            user_id: @user.id,
+            title: "Clean Room",
+            description: "Clean your own room. Example: Make your bed, vacuum your room, pickup and put all out-of-place items in their proper place, clean and organize tables and/or desks. ",
+            price: 5,
+            difficultyLvl: 4,
+            completeBy: Time.new(2020, 5, 1),
+            isFunded: false,
+            isAvailable: false,
+            isCheckedOut: false,
+            isCompleted: false,
+            isApproved: false,
+            isPaid: false,
+        },
+        {
+            user_id: @user.id,
+            title: "Dust House",
+            description: "Dust all shelves and tables in the house",
+            price: 9,
+            difficultyLvl: 1,
+            completeBy: Time.new(2020, 5, 1),
+            isFunded: false,
+            isAvailable: false,
+            isCheckedOut: false,
+            isCompleted: false,
+            isApproved: false,
+            isPaid: false,
+        },
+        {
+            user_id: @user.id,
+            title: "Clean Kitchen",
+            description: "Clean the dishes, tables, appliances, and counters",
+            price: 15,
+            difficultyLvl: 4,
+            completeBy: Time.new(2020, 5, 1),
+            isFunded: false,
+            isAvailable: false,
+            isCheckedOut: false,
+            isCompleted: false,
+            isApproved: false,
+            isPaid: false,
+        },
+        {
+            user_id: @user.id,
+            title: "Laundry",
+            description: "Wash, Dry and put-up all the laundry",
+            price: 20,
+            difficultyLvl: 5,
+            completeBy: Time.new(2020, 5, 1),
+            isFunded: false,
+            isAvailable: false,
+            isCheckedOut: false,
+            isCompleted: false,
+            isApproved: false,
+            isPaid: false,
+        },
+        {
+            user_id: @user.id,
+            title: "Clean Living Room",
+            description: "Pickup the Living Room. Example: Fold all blankets, pickup and put all out-of-place items in their proper place, and put the remote control in a central place.",
+            price: 5,
+            difficultyLvl: 1,
+            completeBy: Time.new(2020, 5, 1),
+            isFunded: false,
+            isAvailable: false,
+            isCheckedOut: false,
+            isCompleted: false,
+            isApproved: false,
+            isPaid: false,
+        },
+    ]
+
   end
 
   # Only allow a list of trusted parameters through.
