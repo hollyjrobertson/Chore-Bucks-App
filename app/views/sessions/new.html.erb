@@ -1,0 +1,25 @@
+<!-- Login Page -->
+<% provide(:title, "Log in") %>
+<div class="center jumbotron" id="login">
+  <h1>Login</h1>
+
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <% if flash[:notice] %>
+        <div class="center notice"><%= flash[:notice] %></div>
+      <% end %>
+      <%= form_for(:session, url: login_path) do |f| %>
+
+        <%= f.label :email %>
+        <%= f.email_field :email, class: 'form-control' %>
+
+        <%= f.label :password %>
+        <%= f.password_field :password, class: 'form-control' %>
+
+        <%= f.submit "Log in", :class => "btn btn-success" %>
+      <% end %>
+      <br>
+      <p>New user? <%= link_to "Sign up Now!", signup_path, :class => "btn btn-primary" %></p>
+    </div>
+  </div>
+</div>

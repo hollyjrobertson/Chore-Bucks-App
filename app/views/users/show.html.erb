@@ -1,0 +1,42 @@
+<!-- You're Signed In -->
+<% provide(:title, @user.name ) %>
+  <div class="row">
+    <aside class="col-md-4">
+      <section class="user_info">
+        <%= gravatar_for @user %>
+        <p id="notice"><%= notice %></p>
+      </section>
+    </aside>
+    <aside class="col-md-4 spacing">
+      <div>
+        <h3>User Information</h3>
+      </div>
+      <div>
+        <strong>Name:</strong>
+        <%= @user.name %>
+      </div>
+      <div>
+        <strong>Email:</strong>
+        <%= @user.email %>
+      </div>
+      <div>
+        <strong>Time:</strong>
+        <%= Time.now %>
+      </div>
+    </aside>
+    <div class="col-md-4">
+      <% if @user.chores.any? %>
+        <h3>Chores (<%= @user.chores.count %>)</h3>
+        <ol class="chores">
+          <%= render @chores %>
+        </ol>
+        <%= will_paginate @chores %>
+      <% end %>
+    </div>
+  <div class="row">
+    <div class="center">
+      <%= link_to 'Edit', edit_user_path(@user), class: "btn btn-lg btn-primary" %> |
+      <%= link_to 'Back', users_path, class: "btn btn-lg btn-primary" %>
+    </div>
+  </div>
+</div>

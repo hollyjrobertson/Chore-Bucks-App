@@ -1,0 +1,7 @@
+{
+  "name": "chore_bucks_app",
+  "private": true,
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.12.1"
+  }
+}

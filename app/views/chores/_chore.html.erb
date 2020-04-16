@@ -1,0 +1,6 @@
+<li>
+  <%= image_tag chore.title.downcase, height: 50, class: border_class(chore) %>
+  <span class="title"><%= link_to chore.title, chore.user %></span>
+  <span class="user"><%= link_to "Parent #{chore.user.name}", chore.user %></span>
+  <span class="user">Due: <%= due_date(chore) %></span>
+ </li>
