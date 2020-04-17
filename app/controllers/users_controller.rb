@@ -32,15 +32,15 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     respond_to do |format|
       if @user.save
-        add_default_chores
+        add_default_chores()
         if Chore.create(@chores)
           log_in @user
           format.html { redirect_to @user, notice: 'Sign-up was successful.' }
           format.json { render :show, status: :created, location: @user }
+        end
       else
         format.html { render :new }
         format.json { render json: @user.errors, status: :unprocessable_entity }
-        end
       end
     end
   end
@@ -70,7 +70,41 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
+  # Only allow a list of trusted parameters through.
+  def user_params
+    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+  end
 
+  private
+  # Use callbacks to share common setup or constraints between actions.
+  def set_user
+    @user = User.find(params[:id])
+  end
+
+  # Confirms a logged-in user.
+  def logged_in_user
+    unless logged_in?
+      flash[:notice] = 'Please Login First'
+      redirect_to login_url
+    end
+  end
+
+  # Confirms a logged-in user.
+  def correct_user
+    @user = User.find(params[:id])
+    unless current_user?(@user) || is_admin?
+      flash[:notice] = 'Unauthorized Access'
+      redirect_to(root_url)
+    end
+  end
+
+  # Confirms if user is admin
+  def is_admin
+    unless is_admin?
+      flash[:notice] = 'Unauthorized Access'
+      redirect_to root_url
+    end
+  end
 
   # Adds 10 Default Chores to a new user
   def add_default_chores()
@@ -218,42 +252,5 @@ class UsersController < ApplicationController
     ]
 
   end
-
-  # Only allow a list of trusted parameters through.
-  def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
-  end
-
-  private
-  # Use callbacks to share common setup or constraints between actions.
-  def set_user
-    @user = User.find(params[:id])
-  end
-
-  # Confirms a logged-in user.
-  def logged_in_user
-    unless logged_in?
-      flash[:notice] = 'Please Login First'
-      redirect_to login_url
-    end
-  end
-
-  # Confirms a logged-in user.
-  def correct_user
-    @user = User.find(params[:id])
-    unless current_user?(@user) || is_admin?
-      flash[:notice] = 'Unauthorized Access'
-      redirect_to(root_url)
-    end
-  end
-
-  # Confirms if user is admin
-  def is_admin
-    unless is_admin?
-      flash[:notice] = 'Unauthorized Access'
-      redirect_to root_url
-    end
-  end
-
 
 end
