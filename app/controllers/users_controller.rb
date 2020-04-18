@@ -106,7 +106,7 @@ class UsersController < ApplicationController
     end
   end
 
-  # Adds 10 Default Chores to a new user
+  # Adds Default Chores to a new user
   def add_chores()
     @chores = add_default_chores(@user.id)
   end
