@@ -1,0 +1,48 @@
+<%= form_with(model: chore, local: true) do |form| %>
+  <%= render 'shared/error_messages' %>
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id, id: :user_id, class: 'form-control', readonly: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title, id: :title, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description  %>
+    <%= form.text_field  :description, id: :description, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :price  %>
+    <%= form.number_field  :price, id: :price, class: 'form-control', in: 1..100, step: 1 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :difficultyLvl  %>
+    <%= form.number_field  :difficultyLvl, id: :difficultyLvl, class: 'form-control', in: 1..5, step: 1 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :completeBy %>
+    <%= form.date_field  :completeBy, id: :completeBy, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :isFunded, "Do you want to Fund chore?" %>
+    <%= form.radio_button :isFunded, "true" %>Yes
+    <%= form.radio_button :isFunded, "false" %>No
+  </div>
+
+  <div class="field">
+    <%= form.label :isAvailable, "Do you want to make chore Available?" %>
+    <%= form.radio_button :isAvailable, "true" %>Yes
+    <%= form.radio_button :isAvailable, "false" %>No
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Create my Chore", class: "btn btn-lg btn-primary"  %>
+  </div>
+<% end %>

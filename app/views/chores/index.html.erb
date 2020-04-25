@@ -11,8 +11,9 @@
         <th>User ID</th>
         <th>Title</th>
         <th>Price</th>
+        <th>Difficulty Level</th>
         <th>Availability</th>
-        <th colspan="3"></th>
+        <th colspan="3">Admin Actions</th>
       </tr>
       </thead>
 
@@ -22,7 +23,12 @@
           <td><%= chore.user_id %></td>
           <td><%= chore.title %></td>
           <td><%= chore.price %></td>
-          <td><%= chore.isAvailable %></td>
+          <td><%= chore.difficultyLvl %></td>
+          <% if chore.isAvailable == "false" %>
+            <td>Not Available</td>
+          <% else %>
+            <td>Is Available</td>
+          <% end %>
           <td><%= link_to 'Show', chore %></td>
           <td><%= link_to 'Edit', edit_chore_path(chore) %></td>
           <td><%= link_to 'Destroy', chore, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -33,6 +39,6 @@
 
     <br>
 
-    <%= link_to 'New User', new_user_path, class: "btn btn-lg btn-primary" %>
+    <%= link_to 'New Chore', new_chore_path, class: "btn btn-lg btn-primary" %>
   </div>
 </div>
