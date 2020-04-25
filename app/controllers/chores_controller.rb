@@ -37,10 +37,44 @@ class ChoresController < ApplicationController
     end
   end
 
+  # PATCH/PUT /chores/1
+  # PATCH/PUT /chores/1.json
+  def update
+    set_chore
+    respond_to do |format|
+      if @chore.update(update_chore_params)
+        format.html { redirect_to @chore, notice: @chore.title + ' was successfully updated.' }
+        format.json { render :show, status: :ok, location: @chore }
+      else
+        format.html { render :edit }
+        format.json { render json: @chore.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # DELETE /chores/1
+  # DELETE /chores/1.json
+  def destroy
+    set_chore
+    @destroyedchore = @chore.title
+    @chore.destroy
+    respond_to do |format|
+      format.html { redirect_to chores_url, notice: @destroyedchore + ' was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
+
 # Only allow a list of trusted parameters through.
   def chore_params
     params.require(:chore).permit(:user_id, :title, :description, :price, :difficultyLvl,
-                                 :completeBy, :isFunded, :isAvailable, false, false, false, false)
+                                 :completeBy, :isFunded, :isAvailable)
+  end
+
+  # Only allow a list of trusted parameters through.
+  def update_chore_params
+    params.require(:chore).permit(:user_id, :title, :description, :price, :difficultyLvl,
+                                  :completeBy, :isFunded, :isAvailable, :isCheckedOut, :isCompleted,
+                                  :isApproved, :isPaid)
   end
 
   private

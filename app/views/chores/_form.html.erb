@@ -12,12 +12,12 @@
 
   <div class="field">
     <%= form.label :description  %>
-    <%= form.text_field  :description, id: :description, class: 'form-control' %>
+    <%= form.text_area :description, id: :description, class: 'form-control' %>
   </div>
 
   <div class="field">
     <%= form.label :price  %>
-    <%= form.number_field  :price, id: :price, class: 'form-control', in: 1..100, step: 1 %>
+    <%= form.text_field  :price, id: :price, class: 'form-control' %>
   </div>
 
   <div class="field">
@@ -31,15 +31,13 @@
   </div>
 
   <div class="field">
-    <%= form.label :isFunded, "Do you want to Fund chore?" %>
-    <%= form.radio_button :isFunded, "true" %>Yes
-    <%= form.radio_button :isFunded, "false" %>No
+    <%= form.label :isFunded, "Do you want to Fund this chore?" %>
+    <%= form.select(:isFunded, [['Yes', true], ['No', false]]) %>
   </div>
 
   <div class="field">
-    <%= form.label :isAvailable, "Do you want to make chore Available?" %>
-    <%= form.radio_button :isAvailable, "true" %>Yes
-    <%= form.radio_button :isAvailable, "false" %>No
+    <%= form.label :isAvailable, "Do you want to make this chore Available?" %>
+    <%= form.select(:isAvailable, [['Yes', true], ['No', false]]) %>
   </div>
 
   <div class="actions">

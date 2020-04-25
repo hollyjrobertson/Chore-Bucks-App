@@ -1,6 +1,6 @@
 <% provide(:title, "Settings") %>
 <div class="center jumbotron">
-  <h1>Update your profile</h1>
+  <h1>Edit a chore</h1>
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
       <%= form_for(@chore) do |f| %>
@@ -12,11 +12,35 @@
         <%= f.label :title %>
         <%= f.text_field :title, class: 'form-control' %>
 
+        <%= f.label :description %>
+        <%= f.text_area :description, class: 'form-control', size: "24x6" %>
+
         <%= f.label :price %>
         <%= f.text_field :price, class: 'form-control' %>
 
-        <%= f.label :isAvailable, "Confirmation" %>
-        <%= f.text_field :isAvailable, class: 'form-control' %>
+        <%= f.label :difficultyLvl %>
+        <%= f.number_field :difficultyLvl, class: 'form-control', in: 1..5, step: 1 %>
+
+        <%= f.label :completeBy %>
+        <%= f.date_field  :completeBy, class: 'form-control'%>
+
+        <%= f.label :isFunded, "Do you want to Fund this chore?"  %>
+        <%= f.select(:isFunded, [['Yes', true], ['No', false]]) %>
+
+        <%= f.label :isAvailable, "Do you want to make this chore Available?"  %>
+        <%= f.select(:isAvailable, [['Yes', true], ['No', false]]) %>
+
+        <%= f.label :isCheckedOut, "Is this chore Checked-Out?"  %>
+        <%= f.select(:isCheckedOut, [['Yes', true], ['No', false]]) %>
+
+        <%= f.label :isCompleted, "Is this chore Completed?"  %>
+        <%= f.select(:isCompleted, [['Yes', true], ['No', false]]) %>
+
+        <%= f.label :isApproved, "Is payment Approved?"  %>
+        <%= f.select(:isApproved, [['Yes', true], ['No', false]]) %>
+
+        <%= f.label :isPaid, "Has this chore been Paid?"  %>
+        <%= f.select(:isPaid, [['Yes', true], ['No', false]]) %>
 
         <%= f.submit "Save changes", class: 'btn btn-primary', :readonly => true %>
       <% end %>
